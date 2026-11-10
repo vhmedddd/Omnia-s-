@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A little something for Wanda</title>
+<style>
+:root{color-scheme:dark;--sky1:#050b24;--sky2:#101a4a;--sky3:#2a2466;--star:#fff4c7;--ink:#fdf3f6}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;background:var(--sky1);color:var(--ink);font-family:"Cormorant Garamond",Georgia,"Noto Naskh Arabic","Hiragino Mincho ProN",serif;overflow:hidden}
+.page{position:fixed;inset:0;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0);transition:opacity 1.4s}
+#sky{background:radial-gradient(120% 90% at 50% 110%,var(--sky3),var(--sky2) 45%,var(--sky1) 80%)}
+#gift{background:radial-gradient(120% 90% at 50% 100%,#4a2a63,#251a4d 50%,#0c1030 90%);opacity:0;pointer-events:none}
+.on{opacity:1!important;pointer-events:auto!important}
+.dust{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.5;animation:tw 4s infinite alternate}
+@keyframes tw{to{opacity:.1}}
+.hint{position:absolute;top:8%;left:0;right:0;text-align:center;font-size:clamp(1.2rem,4.5vw,1.7rem);font-style:italic;opacity:.85;padding:0 1rem}
+.dots{position:absolute;bottom:7%;left:0;right:0;display:flex;gap:12px;justify-content:center}
+.dots i{width:10px;height:10px;border-radius:50%;border:1px solid var(--star);transition:.4s}
+.dots i.lit{background:var(--star);box-shadow:0 0 12px var(--star)}
+.star{position:absolute;width:54px;height:54px;margin:-27px 0 0 -27px;background:none;border:0;cursor:pointer;color:var(--star);animation:pulse 2.6s infinite ease-in-out;-webkit-tap-highlight-color:transparent}
+.star svg{width:100%;height:100%;filter:drop-shadow(0 0 8px var(--star))}
+.star:focus-visible{outline:2px solid #fff;border-radius:50%}
+.star.lit{animation:none;transform:scale(1.25)}
+.star.lit svg{filter:drop-shadow(0 0 16px #fff)}
+@keyframes pulse{50%{transform:scale(1.18);opacity:.75}}
+.msg{position:absolute;transform:translate(-50%,0);white-space:nowrap;font-size:clamp(1.5rem,6vw,2.3rem);font-style:italic;text-shadow:0 0 16px #8fa3ff;pointer-events:none;animation:rise 2.6s forwards}
+@keyframes rise{0%{opacity:0;margin-top:20px}15%{opacity:1}80%{opacity:1}100%{opacity:0;margin-top:-70px}}
+#fl{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.p{position:absolute;top:-30px;background:linear-gradient(135deg,#ffe3ec,#f6a6c1);border-radius:100% 0 100% 0;opacity:.9;animation:fall linear infinite}
+@keyframes fall{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(40px,55vh) rotate(180deg)}100%{transform:translate(-30px,112vh) rotate(380deg)}}
+.wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
+#bq{width:min(88vw,46vh*0.84,420px);height:auto;filter:drop-shadow(0 18px 30px rgba(0,0,0,.45));animation:bloom 2s cubic-bezier(.2,.8,.2,1) both}
+@keyframes bloom{from{transform:scale(.6) translateY(40px);opacity:0}}
+.note{text-align:center;padding:0 1.4rem;max-width:30rem}
+.note p{font-size:clamp(1.45rem,5.6vw,2.1rem);line-height:1.25;font-style:italic}
+.note small{display:block;margin-top:.5rem;font-size:1.25rem;opacity:.8}
+#ytw{position:fixed;right:0;bottom:0;width:200px;height:200px;opacity:.01;pointer-events:none;z-index:-1}
+#mus{display:none;position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);z-index:20;padding:.7rem 1.3rem;border-radius:999px;border:1px solid #ffd6e4;background:rgba(40,20,70,.85);color:#fff;font:1.15rem Georgia,serif;cursor:pointer}
+@media(prefers-reduced-motion:reduce){.p,.star,.dust{animation:none}}
+</style>
+</head>
+<body>
+
+<main class="page" id="sky">
+  <p class="hint">Tap the stars to open your gift</p>
+  <div class="dots" id="dots"><i></i><i></i><i></i><i></i><i></i></div>
+</main>
+
+<main class="page" id="gift" aria-live="polite">
+  <div id="fl"></div>
+  <div class="wrap">
+    <svg id="bq" viewBox="0 0 400 440" role="img" aria-label="A bouquet of roses and orchids">
+      <defs>
+        <radialGradient id="r1" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#ff6b7d"/><stop offset="1" stop-color="#9c1430"/></radialGradient>
+        <radialGradient id="r2" cx="50%" cy="35%" r="70%"><stop offset="0" stop-color="#e0314f"/><stop offset=".7" stop-color="#a50f2d"/><stop offset="1" stop-color="#5e0618"/></radialGradient>
+        <radialGradient id="r3" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#7a0a22"/><stop offset="1" stop-color="#c0243f"/></radialGradient>
+        <radialGradient id="pk" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#ffd2de"/><stop offset="1" stop-color="#ee7fa0"/></radialGradient>
+        <radialGradient id="or" cx="50%" cy="70%" r="75%"><stop offset="0" stop-color="#f7f0ff"/><stop offset=".6" stop-color="#e8d4f7"/><stop offset="1" stop-color="#b987dd"/></radialGradient>
+        <radialGradient id="lip" cx="50%" cy="30%" r="70%"><stop offset="0" stop-color="#ff5fb3"/><stop offset="1" stop-color="#8a1d78"/></radialGradient>
+        <linearGradient id="lf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fa36a"/><stop offset="1" stop-color="#1c5a3a"/></linearGradient>
+        <linearGradient id="pp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0f4"/><stop offset="1" stop-color="#e9a9bf"/></linearGradient>
+        <path id="leaf" d="M0 0C14-18 14-52 0-80C-14-52-14-18 0 0Z" fill="url(#lf)"/>
+        <g id="rose">
+          <circle r="46" fill="url(#r2)"/>
+          <g fill="url(#r1)" stroke="#6b0f22" stroke-width=".8" stroke-opacity=".5">
+            <ellipse cx="0" cy="-26" rx="22" ry="20"/><ellipse cx="0" cy="-26" rx="22" ry="20" transform="rotate(72)"/><ellipse cx="0" cy="-26" rx="22" ry="20" transform="rotate(144)"/><ellipse cx="0" cy="-26" rx="22" ry="20" transform="rotate(216)"/><ellipse cx="0" cy="-26" rx="22" ry="20" transform="rotate(288)"/>
+          </g>
+          <circle r="25" fill="url(#r2)"/>
+          <g fill="url(#r1)" stroke="#6b0f22" stroke-width=".8" stroke-opacity=".5">
+            <ellipse cx="0" cy="-14" rx="14" ry="13" transform="rotate(36)"/><ellipse cx="0" cy="-14" rx="14" ry="13" transform="rotate(108)"/><ellipse cx="0" cy="-14" rx="14" ry="13" transform="rotate(180)"/><ellipse cx="0" cy="-14" rx="14" ry="13" transform="rotate(252)"/><ellipse cx="0" cy="-14" rx="14" ry="13" transform="rotate(324)"/>
+          </g>
+          <circle r="11" fill="url(#r3)"/>
+          <path d="M-6 -2C-2 -9 8 -6 6 2C4 8-5 8-6 2" fill="none" stroke="#4a0414" stroke-width="1.4" opacity=".7"/>
+          <ellipse cx="-14" cy="-24" rx="10" ry="4" fill="#fff" opacity=".18" transform="rotate(-30 -14 -24)"/>
+        </g>
+        <g id="orchid">
+          <g fill="url(#or)" stroke="#a77bc9" stroke-width=".8" stroke-opacity=".6">
+            <ellipse cx="0" cy="-32" rx="11" ry="24" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-32" rx="11" ry="24" transform="rotate(120)"/>
+            <ellipse cx="0" cy="-32" rx="11" ry="24" transform="rotate(240)"/>
+            <ellipse cx="-27" cy="-6" rx="25" ry="21" transform="rotate(-8 -27 -6)"/>
+            <ellipse cx="27" cy="-6" rx="25" ry="21" transform="rotate(8 27 -6)"/>
+          </g>
+          <g stroke="#c58be0" stroke-width=".7" opacity=".6" fill="none"><path d="M-8 -2L-40 -8M-8 0L-38 6M8 -2L40 -8M8 0L38 6M0 -10V-48"/></g>
+          <path d="M-13 2C-18 18-8 32 0 34C8 32 18 18 13 2C6 8-6 8-13 2Z" fill="url(#lip)"/>
+          <circle cx="0" cy="-2" r="7" fill="#f6d84c"/><circle cx="0" cy="-2" r="3.2" fill="#b9482c"/>
+          <path d="M-5 14L-3 22M5 14L3 22M0 12V24" stroke="#ffd1ec" stroke-width="1.2" opacity=".7"/>
+        </g>
+      </defs>
+      <!-- stems -->
+      <g stroke="#2f7a4a" stroke-width="5" fill="none" stroke-linecap="round">
+        <path d="M200 400C196 330 130 250 96 180"/><path d="M200 400C204 330 270 250 306 182"/>
+        <path d="M200 400C198 330 160 270 140 250"/><path d="M200 400C202 330 242 270 262 252"/>
+        <path d="M200 400C200 320 200 240 200 150"/><path d="M200 400C190 340 110 330 70 280"/><path d="M200 400C210 340 290 330 332 282"/>
+      </g>
+      <!-- leaves -->
+      <use href="#leaf" transform="translate(120 300) rotate(-70) scale(.9)"/><use href="#leaf" transform="translate(284 300) rotate(70) scale(.9)"/>
+      <use href="#leaf" transform="translate(70 262) rotate(-105) scale(.8)"/><use href="#leaf" transform="translate(332 262) rotate(105) scale(.8)"/>
+      <use href="#leaf" transform="translate(160 250) rotate(-30) scale(1)"/><use href="#leaf" transform="translate(242 250) rotate(30) scale(1)"/>
+      <use href="#leaf" transform="translate(200 230) rotate(-8) scale(.8)"/>
+      <!-- flowers -->
+      <use href="#orchid" transform="translate(88 168) rotate(-14) scale(.95)"/>
+      <use href="#orchid" transform="translate(314 170) rotate(12) scale(.95)"/>
+      <use href="#orchid" transform="translate(200 108) scale(.85)"/>
+      <use href="#rose" transform="translate(140 236) rotate(20) scale(.86)"/>
+      <use href="#rose" transform="translate(262 238) rotate(-30) scale(.86)"/>
+      <use href="#rose" transform="translate(200 194) rotate(10) scale(.95)"/>
+      <use href="#rose" transform="translate(70 276) rotate(60) scale(.62)"/>
+      <use href="#rose" transform="translate(332 278) rotate(-10) scale(.62)"/>
+      <!-- wrap -->
+      <path d="M110 310C150 296 250 296 290 310L226 418Q200 430 174 418Z" fill="url(#pp)" stroke="#d98aa6" stroke-width="1.5"/>
+      <path d="M110 310C150 322 250 322 290 310" fill="none" stroke="#d98aa6" stroke-width="1.5"/>
+      <path d="M150 316L190 420M250 316L210 420" stroke="#d98aa6" stroke-width="1" opacity=".5"/>
+      <path d="M176 340L146 366L176 374L200 352L224 374L254 366L224 340Q200 350 176 340Z" fill="#d6336c"/><circle cx="200" cy="350" r="9" fill="#a8204f"/>
+    </svg>
+    <div class="note">
+      <p>Hope u get well soon Wanda and eat lots of fries 🍟🍟🍟</p>
+      <small>From Gendy</small>
+    </div>
+  </div>
+</main>
+
+<div id="ytw"><div id="ytp"></div></div>
+<button id="mus" type="button">🎵 Tap for music</button>
+<script>
+(function(){
+  var sky=document.getElementById('sky'),gift=document.getElementById('gift'),dots=document.querySelectorAll('#dots i');
+  var langs=[
+    {t:'Get well soon!',l:'en',x:20,y:30},
+    {t:'¡Mejórate pronto!',l:'es',x:74,y:24},
+    {t:'Rétablis-toi vite !',l:'fr',x:48,y:46},
+    {t:'ألف سلامة، الشفاء العاجل',l:'ar',x:24,y:64,rtl:1},
+    {t:'早く良くなってね',l:'ja',x:76,y:62}
+  ];
+  var star='<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.5l2.6 7.2 7.6.3-6 4.7 2.1 7.4L12 16.9 5.7 21.1l2.1-7.4-6-4.7 7.6-.3z"/></svg>';
+  var seen={},count=0,opened=false;
+  for(var i=0;i<90;i++){var d=document.createElement('div');d.className='dust';d.style.left=Math.random()*100+'%';d.style.top=Math.random()*100+'%';d.style.animationDelay=Math.random()*4+'s';var s=Math.random()*2+1;d.style.width=d.style.height=s+'px';sky.appendChild(d)}
+  langs.forEach(function(L,i){
+    var b=document.createElement('button');b.className='star';b.innerHTML=star;b.setAttribute('aria-label','Star '+(i+1));
+    b.style.left=L.x+'%';b.style.top=L.y+'%';b.style.animationDelay=(i*.4)+'s';
+    b.onclick=function(){
+      var m=document.createElement('div');m.className='msg';m.textContent=L.t;m.lang=L.l;if(L.rtl)m.dir='rtl';
+      m.style.left=Math.min(Math.max(L.x,28),72)+'%';m.style.top=(L.y+7)+'%';sky.appendChild(m);setTimeout(function(){m.remove()},2700);
+      b.classList.add('lit');
+      if(!seen[i]){seen[i]=1;dots[count++].classList.add('lit');
+        if(count===langs.length&&!opened){opened=true;startMusic();setTimeout(openGift,1800);setTimeout(checkMusic,4500)}}
+    };
+    sky.appendChild(b);
+  });
+  var yt=null,ytReady=false,wantPlay=false,mus=document.getElementById('mus');
+  window.onYouTubeIframeAPIReady=function(){
+    yt=new YT.Player('ytp',{width:'200',height:'200',videoId:'raRDdoswbsw',playerVars:{controls:0,playsinline:1,rel:0,start:150},
+      events:{onReady:function(){ytReady=true;if(wantPlay)startMusic()},
+      onStateChange:function(e){if(e.data===1)mus.style.display='none'}}});
+  };
+  var ys=document.createElement('script');ys.src='https://www.youtube.com/iframe_api';document.head.appendChild(ys);
+  function startMusic(){
+    wantPlay=true;if(!ytReady)return;
+    try{yt.seekTo(150,true);yt.playVideo()}catch(e){}
+  }
+  function checkMusic(){
+    var playing=false;try{playing=yt&&yt.getPlayerState()===1}catch(e){}
+    if(!playing)mus.style.display='block';
+  }
+  mus.onclick=function(){startMusic();mus.style.display='none'};
+  function openGift(){
+    sky.style.opacity=0;sky.style.pointerEvents='none';gift.classList.add('on');
+    var f=document.getElementById('fl');
+    for(var i=0;i<34;i++){var p=document.createElement('div');p.className='p';var w=10+Math.random()*14;
+      p.style.cssText='left:'+Math.random()*100+'%;width:'+w+'px;height:'+w*.8+'px;animation-duration:'+(8+Math.random()*9)+'s;animation-delay:-'+Math.random()*16+'s';f.appendChild(p)}
+  }
+})();
+</script>
+</body>
+</html>
